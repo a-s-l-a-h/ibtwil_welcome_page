@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ibtwil — i built the way i like 😊</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-bg: #fdf6ec;
+      --text-color: #4a4a4a;
+      --accent: #ff7d5c;
+      --soft-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      --border-radius: 16px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      gap: 2rem;
+    }
+
+    /* LEFT SIDE — IMAGE */
+    .hero-image {
+      flex: 0 0 40%;
+      max-width: 40%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--border-radius);
+      box-shadow: var(--soft-shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .hero-image img:hover {
+      transform: scale(1.02);
+    }
+
+    /* RIGHT SIDE — TEXT + ANIMATION */
+    .hero-content {
+      flex: 0 0 60%;
+      max-width: 60%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .animated-phrase {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 2rem;
+      min-height: 7rem;
+      position: relative;
+      padding: 1rem 0;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 1em;
+      background: var(--text-color);
+      animation: blink 1s step-end infinite;
+      vertical-align: middle;
+      margin-left: 4px;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .brand-tagline {
+      font-size: clamp(1rem, 3vw, 1.3rem);
+      line-height: 1.6;
+      max-width: 500px;
+      margin: 0 auto 2rem;
+    }
+
+    .brand-name {
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    /* FUTURE-READY BUTTON (hidden for now, uncomment later) */
+    /*
+    .cta-button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: var(--transition);
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(255, 125, 92, 0.3);
+    }
+    */
+
+    /* FOOTER */
+    footer {
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #888;
+      margin-top: auto;
+    }
+
+    /* MOBILE RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        padding: 1rem;
+      }
+
+      .hero-image,
+      .hero-content {
+        max-width: 100%;
+        flex: none;
+        width: 100%;
+      }
+
+      .hero-image {
+        margin-bottom: 2rem;
+      }
+
+      .animated-phrase {
+        font-size: clamp(2rem, 8vw, 3.5rem);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="hero-image">
+      <img src="ibtwil.png" alt="ibtwil — I Built The Way I Like" />
+    </div>
+    <div class="hero-content">
+      <div class="animated-phrase" id="typewriter">
+        i built the way i like. 😊<span class="cursor"></span>
+      </div>
+      <div class="brand-tagline">
+        <span class="brand-name">ibtwil</span>
+        <!-- <strong class="highlight">It's a DIY Support Hub 🛠️</strong> -->
+     </div>
+    </div>
+  </section>
+
+  <footer>
+    <!-- coming soon .... -->
+    
+  </footer>
+
+  <script>
+    //😉
+    // ========== Typewriter Animation with Emoji 😊 ==========
+    const phrases = [
+      "i built the way i like. 😊"
+    ];
+
+    const typewriterElement = document.getElementById("typewriter");
+    let charIndex = 0;
+    let phraseIndex = 0;
+    let isDeleting = false;
+    const typingSpeed = 100;    // Typing speed
+    const erasingSpeed = 50;    // Erasing speed
+    const delayBetween = 2000;  // Delay between phrases
+
+    function type() {
+      const currentPhrase = phrases[phraseIndex];
+      
+      if (!isDeleting) {
+        // Typing
+        typewriterElement.innerHTML = currentPhrase.substring(0, charIndex + 1) + '<span class="cursor"></span>';
+        charIndex++;
+
+        if (charIndex === currentPhrase.length) {
+          isDeleting = true;
+          setTimeout(type, delayBetween);
+          return;
+        }
+      } else {
+        // Deleting
+        typewriterElement.innerHTML = currentPhrase.substring(0, charIndex - 1) + '<span class="cursor"></span>';
+        charIndex--;
+
+        if (charIndex === 0) {
+          isDeleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          setTimeout(type, 500); // Short pause before next phrase
+          return;
+        }
+      }
+
+      setTimeout(
+        type,
+        isDeleting ? erasingSpeed : typingSpeed
+      );
+    }
+
+    // Start animation after page loads
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(type, 1000);
+    });
+
+    // ========== FUTURE BUSINESS EXPANSION HOOKS ==========
+
+    // Example: Add waitlist popup later
+    /*
+    document.addEventListener('click', function(e) {
+      if (e.target.matches('.cta-button')) {
+        e.preventDefault();
+        alert("🎉 Waitlist signup coming soon! Drop your email at hello@ibtwil.com");
+        // Later: open modal, integrate Mailchimp, etc.
+      }
+    });
+    */
+
+    // Example: Track page views (when you add analytics)
+    // console.log("ibtwil visited — future business metric #1");
+
+  </script>
+
+</body>
+</html>
