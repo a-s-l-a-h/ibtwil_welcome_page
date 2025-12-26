@@ -30,19 +30,61 @@
       flex-direction: column;
     }
 
+    /* HEADER WITH LOGO */
+    header {
+      padding: 2rem 4rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .logo-icon {
+      width: 60px;
+      height: 60px;
+      opacity: 0.85;
+    }
+
+    .logo-text {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-color);
+    }
+
+    /* HERO SECTION */
     .hero {
       display: flex;
       flex: 1;
       align-items: center;
       justify-content: center;
-      padding: 2rem;
-      gap: 2rem;
+      padding: 4rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
     }
 
-    /* LEFT SIDE — IMAGE */
+    .hero-content {
+      flex: 1;
+      padding-right: 3rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      color: var(--text-color);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      line-height: 1.6;
+      color: #666;
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+
     .hero-image {
-      flex: 0 0 40%;
-      max-width: 40%;
+      flex: 0 0 280px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -51,169 +93,12 @@
     .hero-image img {
       max-width: 100%;
       height: auto;
-      border-radius: var(--border-radius);
-      box-shadow: var(--soft-shadow);
-      transition: transform 0.3s ease;
-    }
-
-    .hero-image img:hover {
-      transform: scale(1.02);
-    }
-
-    /* RIGHT SIDE — TEXT + ANIMATION */
-    .hero-content {
-      flex: 0 0 60%;
-      max-width: 60%;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 2rem;
-    }
-
-    .animated-phrase {
-      font-size: clamp(2.5rem, 8vw, 4.5rem);
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 2rem;
-      min-height: 7rem;
-      position: relative;
-      padding: 1rem 0;
-    }
-
-    .cursor {
-      display: inline-block;
-      width: 8px;
-      height: 1em;
-      background: var(--text-color);
-      animation: blink 1s step-end infinite;
-      vertical-align: middle;
-      margin-left: 4px;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    .brand-tagline {
-      font-size: clamp(1rem, 3vw, 1.3rem);
-      line-height: 1.6;
-      max-width: 500px;
-      margin: 0 auto 2rem;
-    }
-
-    .brand-name {
-      font-size: clamp(1.8rem, 5vw, 2.5rem);
-      font-weight: 700;
-      display: block;
-      margin-bottom: 0.5rem;
-      color: var(--accent);
-    }
-
-    /* FUTURE-READY BUTTON (hidden for now, uncomment later) */
-    /*
-    .cta-button {
-      background: var(--accent);
-      color: white;
-      border: none;
-      padding: 1rem 2rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      border-radius: 50px;
-      cursor: pointer;
-      margin-top: 1rem;
-      transition: var(--transition);
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .cta-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(255, 125, 92, 0.3);
-    }
-    */
-
-    /* SERVICES SECTION */
-    .services {
-      padding: 4rem 2rem;
-      background: linear-gradient(135deg, #fff5e6 0%, #ffe8cc 100%);
-    }
-
-    .services-container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .services-title {
-      text-align: center;
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-weight: 700;
-      margin-bottom: 3rem;
-      color: var(--text-color);
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .service-card {
-      background: white;
-      border-radius: var(--border-radius);
-      padding: 2.5rem 2rem;
-      box-shadow: var(--soft-shadow);
-      transition: var(--transition);
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: var(--accent);
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 30px rgba(255, 125, 92, 0.2);
-    }
-
-    .service-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .service-icon {
-      font-size: 3rem;
-      margin-bottom: 1.5rem;
-      display: block;
-    }
-
-    .service-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      color: var(--text-color);
-    }
-
-    .service-description {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #666;
+      opacity: 0.8;
     }
 
     /* FOOTER */
     footer {
-      padding: 1.5rem;
+      padding: 2rem;
       text-align: center;
       font-size: 0.9rem;
       color: #888;
@@ -221,150 +106,88 @@
     }
 
     /* MOBILE RESPONSIVE */
-    @media (max-width: 900px) {
-      .hero {
-        flex-direction: column;
-        padding: 1rem;
+    @media (max-width: 1024px) {
+      header {
+        padding: 1.5rem 2rem;
       }
 
-      .hero-image,
+      .logo-icon {
+        width: 50px;
+        height: 50px;
+      }
+
+      .logo-text {
+        font-size: 1.5rem;
+      }
+
+      .hero {
+        flex-direction: column-reverse;
+        padding: 2rem;
+        text-align: center;
+      }
+
       .hero-content {
-        max-width: 100%;
-        flex: none;
-        width: 100%;
+        padding-right: 0;
+        padding-top: 2rem;
+      }
+
+      .hero-subtitle {
+        margin: 0 auto 2rem;
       }
 
       .hero-image {
-        margin-bottom: 2rem;
+        flex: none;
+        width: 100%;
+        max-width: 250px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem 1.5rem;
       }
 
-      .animated-phrase {
-        font-size: clamp(2rem, 8vw, 3.5rem);
+      .logo-icon {
+        width: 40px;
+        height: 40px;
       }
 
-      .services {
-        padding: 3rem 1.5rem;
+      .logo-text {
+        font-size: 1.3rem;
       }
 
-      .services-grid {
-        grid-template-columns: 1fr;
+      .hero {
+        padding: 1.5rem;
+      }
+
+      .hero-image {
+        max-width: 200px;
       }
     }
   </style>
 </head>
 <body>
 
-  <section class="hero">
-    <div class="hero-image">
-      <img src="ibtwil.png" alt="ibtwil" />
-    </div>
-    <div class="hero-content">
-      <div class="animated-phrase" id="typewriter">
-        ibtwil<span class="cursor"></span>
-      </div>
-      <div class="brand-tagline">
-        <span class="brand-name">ibtwil</span>
-        <!-- <strong class="highlight">It's a DIY Support Hub 🛠️</strong> -->
-     </div>
-    </div>
-  </section>
+  <header>
+    <img src="ibtwil_1.webp" alt="ibtwil" class="logo-icon" />
+    <div class="logo-text">ibtwil</div>
+  </header>
 
-  <section class="services">
-    <div class="services-container">
-      <h2 class="services-title">What We Do</h2>
-      <div class="services-grid">
-        <div class="service-card">
-          <span class="service-icon">🎓</span>
-          <h3 class="service-title">Advanced Interactive Workshops</h3>
-          <p class="service-description">
-            Engage in hands-on learning experiences that build real technical skills. Our interactive workshops focus on practical learning where you create, experiment, and grow.
-          </p>
-        </div>
-        <div class="service-card">
-          <span class="service-icon">🎯</span>
-          <h3 class="service-title">Technical Event Management</h3>
-          <p class="service-description">
-            We bring technical events to life with careful planning and seamless execution. From concept to completion, we create engaging experiences that inspire and connect.
-          </p>
-        </div>
-      </div>
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Advanced Interactive Workshops providers</h1>
+      <p class="hero-subtitle">
+        We provide hands-on learning experiences that build real technical skills. 
+        Our interactive workshops focus on practical learning where you create, experiment, and grow.
+      </p>
+    </div>
+    <div class="hero-image">
+      <img src="ibtwil_1.webp" alt="Workshop illustration" />
     </div>
   </section>
 
   <footer>
-    <!-- coming soon .... -->
-    
   </footer>
-
-  <script>
-    //😉
-    // ========== Typewriter Animation with Emoji 😊 ==========
-    const phrases = [
-      "ibtwil"
-    ];
-
-    const typewriterElement = document.getElementById("typewriter");
-    let charIndex = 0;
-    let phraseIndex = 0;
-    let isDeleting = false;
-    const typingSpeed = 100;    // Typing speed
-    const erasingSpeed = 50;    // Erasing speed
-    const delayBetween = 2000;  // Delay between phrases
-
-    function type() {
-      const currentPhrase = phrases[phraseIndex];
-      
-      if (!isDeleting) {
-        // Typing
-        typewriterElement.innerHTML = currentPhrase.substring(0, charIndex + 1) + '<span class="cursor"></span>';
-        charIndex++;
-
-        if (charIndex === currentPhrase.length) {
-          isDeleting = true;
-          setTimeout(type, delayBetween);
-          return;
-        }
-      } else {
-        // Deleting
-        typewriterElement.innerHTML = currentPhrase.substring(0, charIndex - 1) + '<span class="cursor"></span>';
-        charIndex--;
-
-        if (charIndex === 0) {
-          isDeleting = false;
-          phraseIndex = (phraseIndex + 1) % phrases.length;
-          setTimeout(type, 500); // Short pause before next phrase
-          return;
-        }
-      }
-
-      setTimeout(
-        type,
-        isDeleting ? erasingSpeed : typingSpeed
-      );
-    }
-
-    // Start animation after page loads
-    window.addEventListener('DOMContentLoaded', () => {
-      setTimeout(type, 1000);
-    });
-
-    // ========== FUTURE BUSINESS EXPANSION HOOKS ==========
-
-    // Example: Add waitlist popup later
-    /*
-    document.addEventListener('click', function(e) {
-      if (e.target.matches('.cta-button')) {
-        e.preventDefault();
-        alert("🎉 Waitlist signup coming soon! Drop your email at hello@ibtwil.com");
-        // Later: open modal, integrate Mailchimp, etc.
-      }
-    });
-    */
-
-    // Example: Track page views (when you add analytics)
-    // console.log("ibtwil visited — future business metric #1");
-
-  </script>
 
 </body>
 </html>
